@@ -11,11 +11,11 @@ app = Flask(__name__)
 CORS(app)
 
 # Initialize OpenAI client
-openai.api_key = os.getenv(OPENAI_API_KEY)
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Initialize OpenAI client (for newer versions)
 try:
-    client = openai.OpenAI(api_key=os.getenv(OPENAI_API_KEY))
+    client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 except:
     client = None
 
