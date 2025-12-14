@@ -99,7 +99,7 @@ python app.py
 
 ### Step 5: Open in Browser
 
-Navigate to: **http://localhost:5000**
+Navigate to: **[Orion AI chatbot](https://orion-ai-chatbot.onrender.com)**
 
 🎉 **You're all set! Start chatting with your AI assistant!**
 
@@ -247,10 +247,10 @@ Deploy your chatbot to the cloud and share it with the world!
 <div align="center">
 
 ### Desktop View
-![Desktop Interface](screenshots/desktop.png)
+![Desktop Interface](<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/5c4864ff-d795-459b-acdd-8c5a69d74ca7" />)
 
 ### Mobile View
-![Mobile Interface](screenshots/mobile.png)
+![Mobile Interface](<img width="357" height="802" alt="image" src="https://github.com/user-attachments/assets/f2b256ba-2a92-40ef-bbd6-0c01d800f747" />)
 
 </div>
 
