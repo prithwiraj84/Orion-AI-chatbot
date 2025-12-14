@@ -497,17 +497,56 @@ html {
 }
 
 .chat-footer {
-    text-align: center;
-    padding: 12px;
-    font-size: 14px;
-    color: #aaa;
-    background: transparent;
-    margin-top: 10px;
+    width: 100%;
+    padding: 14px 0;
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+    color: #ffffff;
+    text-align: center;
+
+    background: transparent;
+
+    /* Glow effect */
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.6),
+        0 0 10px rgba(120, 200, 255, 0.6),
+        0 0 20px rgba(120, 200, 255, 0.5),
+        0 0 30px rgba(120, 200, 255, 0.4);
+
+    animation: footerGlow 3s ease-in-out infinite alternate;
 }
 
 .chat-footer strong {
-    color: #fff;
+    margin-left: 6px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Glow animation */
+@keyframes footerGlow {
+    0% {
+        text-shadow:
+            0 0 4px rgba(255, 255, 255, 0.5),
+            0 0 8px rgba(120, 200, 255, 0.5),
+            0 0 16px rgba(120, 200, 255, 0.4),
+            0 0 24px rgba(120, 200, 255, 0.3);
+    }
+    100% {
+        text-shadow:
+            0 0 6px rgba(255, 255, 255, 0.9),
+            0 0 14px rgba(120, 200, 255, 0.9),
+            0 0 26px rgba(120, 200, 255, 0.7),
+            0 0 40px rgba(120, 200, 255, 0.6);
+    }
 }
 
 
