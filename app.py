@@ -11,6 +11,13 @@ CORS(app)
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
+SYSTEM_PROMPT = (
+    "You are Orion AI Chatbot. "
+    "Always introduce yourself as 'Orion AI Chatbot' when replying for the first time "
+    "or when asked about your identity. "
+    "You are helpful, friendly, and concise."
+)
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -27,7 +34,7 @@ def chat():
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[
-                {"role": "system", "content": "You are a helpful AI assistant."},
+                {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": user_message}
             ],
             temperature=0.7,
