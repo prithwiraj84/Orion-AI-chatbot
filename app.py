@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
-from openai import OpenAI
+from groq import Groq
 import os
 
 load_dotenv()
@@ -9,32 +9,29 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/chat', methods=['POST'])
+@app.route("/chat", methods=["POST"])
 def chat():
     try:
         data = request.get_json()
-        user_message = data.get('message') if data else None
+        user_message = data.get("message") if data else None
 
         if not user_message:
-            return jsonify({'error': 'No message provided'}), 400
-
-        if not os.getenv("OPENAI_API_KEY"):
-            return jsonify({'error': 'OPENAI_API_KEY not configured'}), 500
+            return jsonify({"error": "No message provided"}), 400
 
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="llama3-8b-8192",
             messages=[
-                {"role": "system", "content": "You are a helpful, friendly AI assistant."},
+                {"role": "system", "content": "You are a helpful AI assistant."},
                 {"role": "user", "content": user_message}
             ],
             temperature=0.7,
-            max_tokens=500
+            max_tokens=300
         )
 
         return jsonify({
