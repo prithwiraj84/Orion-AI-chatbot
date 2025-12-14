@@ -7,7 +7,7 @@
 # Initialize git (if not already done)
 git init
 git add .
-git commit -m "Initial commit - AI Chatbot"
+git commit -m "Initial commit - AI Chatbot with Groq"
 
 # Create repo on GitHub, then:
 git remote add origin https://github.com/yourusername/ai-chatbot.git
@@ -33,8 +33,9 @@ git push -u origin main
 4. **Add Environment Variable**
    - Scroll to "Environment Variables"
    - Add:
-     - **Key:** `OPENAI_API_KEY`
-     - **Value:** `your-actual-api-key-here`
+     - **Key:** `GROQ_API_KEY`
+     - **Value:** `your-groq-api-key-here`
+   - 💡 **Get your key:** [Groq Console](https://console.groq.com/keys)
 
 5. **Deploy**
    - Click "Create Web Service"
@@ -57,8 +58,14 @@ git push -u origin main
 3. Click "New Project" → "Deploy from GitHub repo"
 4. Select your repo
 5. Go to "Variables" tab
-6. Add: `OPENAI_API_KEY` = `your-key`
+6. Add: `GROQ_API_KEY` = `your-groq-api-key`
 7. ✅ Auto-deploys! Get URL from dashboard
+
+**Get Groq API Key:**
+- Visit [Groq Console](https://console.groq.com/keys)
+- Sign up or log in
+- Create a new API key
+- Copy and paste into Railway
 
 ---
 
@@ -69,7 +76,7 @@ git push -u origin main
 - [ ] Add live URL to portfolio
 - [ ] Include screenshots
 - [ ] Link to GitHub repo
-- [ ] Add tech stack badges
+- [ ] Add tech stack badges (include Groq!)
 - [ ] Write project description
 
 ---
@@ -77,14 +84,14 @@ git push -u origin main
 ## 🔗 Example Portfolio Entry
 
 ```markdown
-### AI Chatbot with OpenAI
+### AI Chatbot with Groq
 **Live Demo:** https://your-app.onrender.com  
 **GitHub:** https://github.com/yourusername/ai-chatbot
 
-A modern AI chatbot built with Flask, OpenAI API, and vanilla JavaScript. 
+A modern AI chatbot built with Flask, Groq API (ultra-fast inference), and vanilla JavaScript. 
 Features include real-time chat, typewriter effects, and responsive design.
 
-**Tech Stack:** Python, Flask, OpenAI API, HTML, CSS, JavaScript
+**Tech Stack:** Python, Flask, Groq API, HTML, CSS, JavaScript
 ```
 
 ---
@@ -95,18 +102,44 @@ Features include real-time chat, typewriter effects, and responsive design.
 2. **API key must be set in platform's environment variables**
 3. **Free tiers may have cold starts** (first request may be slow)
 4. **Render free tier:** Spins down after 15 min inactivity
+5. **Groq API Key:** Get from [console.groq.com](https://console.groq.com/keys)
+
+---
+
+## 🔑 Getting Your Groq API Key
+
+1. **Visit Groq Console**
+   - Go to https://console.groq.com
+   - Sign up or log in (free account)
+
+2. **Create API Key**
+   - Navigate to "API Keys" section
+   - Click "Create API Key"
+   - Copy the key (save it securely!)
+
+3. **Add to Deployment**
+   - Use the key as `GROQ_API_KEY` environment variable
+   - Never commit it to GitHub!
 
 ---
 
 ## 🆘 Having Issues?
 
 1. Check deployment logs for errors
-2. Verify API key is set correctly
+2. Verify API key is set correctly (as `GROQ_API_KEY`)
 3. Make sure all files are in GitHub repo
-4. See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed troubleshooting
+4. Ensure `groq` is in `requirements.txt`
+5. See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed troubleshooting
+
+---
+
+## ⚡ Why Groq?
+
+- **Lightning Fast**: Get responses in milliseconds
+- **Cost-Effective**: More affordable than traditional APIs
+- **Free Tier**: Generous free tier for testing
+- **Easy Setup**: Simple API integration
 
 ---
 
 **That's it! Your chatbot is now live and ready for your portfolio! 🎊**
-
-
