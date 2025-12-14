@@ -496,5 +496,19 @@ html {
     scroll-behavior: smooth;
 }
 
+.chat-footer {
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    color: #aaa;
+    background: transparent;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.chat-footer strong {
+    color: #fff;
+}
+
 
 
