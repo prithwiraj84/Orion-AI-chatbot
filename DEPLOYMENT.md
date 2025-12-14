@@ -1,6 +1,6 @@
-# Deployment Guide - AI Chatbot
+# Deployment Guide - AI Chatbot with Groq
 
-This guide covers multiple deployment options for your AI chatbot. Choose the platform that best fits your needs.
+This guide covers multiple deployment options for your AI chatbot powered by Groq's ultra-fast inference API. Choose the platform that best fits your needs.
 
 ## 🚀 Quick Deploy Options
 
@@ -23,11 +23,11 @@ This guide covers multiple deployment options for your AI chatbot. Choose the pl
      - **Name:** `ai-chatbot` (or your choice)
      - **Environment:** `Python 3`
      - **Build Command:** `pip install -r requirements.txt`
-     - **Start Command:** `python app.py`
+     - **Start Command:** `gunicorn app:app`
    
 4. **Add Environment Variables**
    - Go to "Environment" tab
-   - Add: `OPENAI_API_KEY` = `your-api-key-here`
+   - Add: `GROQ_API_KEY` = `your-groq-api-key-here`
    - Add: `FLASK_ENV` = `production` (optional)
 
 5. **Deploy**
@@ -57,7 +57,7 @@ This guide covers multiple deployment options for your AI chatbot. Choose the pl
 
 3. **Configure Environment Variables**
    - Go to "Variables" tab
-   - Add: `OPENAI_API_KEY` = `your-api-key-here`
+   - Add: `GROQ_API_KEY` = `your-groq-api-key-here`
 
 4. **Get Your URL**
    - Railway provides a URL like `https://your-app.up.railway.app`
@@ -84,11 +84,11 @@ This guide covers multiple deployment options for your AI chatbot. Choose the pl
 
 3. **Install Dependencies**
    - Go to "Consoles" → "Bash"
-   - Run: `pip3.10 install --user flask flask-cors openai python-dotenv`
+   - Run: `pip3.10 install --user flask flask-cors groq python-dotenv gunicorn`
 
 4. **Set Environment Variables**
    - Create `.env` file in Files tab
-   - Add: `OPENAI_API_KEY=your-api-key`
+   - Add: `GROQ_API_KEY=your-groq-api-key`
 
 5. **Configure Web App**
    - Go to "Web" tab
@@ -134,7 +134,7 @@ This guide covers multiple deployment options for your AI chatbot. Choose the pl
 
 3. **Set Secrets**
    ```bash
-   fly secrets set OPENAI_API_KEY=your-api-key-here
+   fly secrets set GROQ_API_KEY=your-groq-api-key-here
    ```
 
 4. **Deploy**
@@ -169,7 +169,7 @@ This guide covers multiple deployment options for your AI chatbot. Choose the pl
 
 4. **Set Environment Variables**
    ```bash
-   heroku config:set OPENAI_API_KEY=your-api-key-here
+   heroku config:set GROQ_API_KEY=your-groq-api-key-here
    ```
 
 5. **Deploy**
@@ -186,9 +186,10 @@ Before deploying, make sure:
 - [ ] `.env` is in `.gitignore` (never commit API keys!)
 - [ ] `app.py` uses `0.0.0.0` as host (for external access)
 - [ ] Debug mode is disabled in production
-- [ ] All dependencies are in `requirements.txt`
+- [ ] All dependencies are in `requirements.txt` (including `groq`)
 - [ ] `Procfile` exists (for Heroku/Render)
 - [ ] Tested locally with production settings
+- [ ] Groq API key is ready ([Get one here](https://console.groq.com/keys))
 
 ---
 
@@ -242,11 +243,13 @@ Before deploying, make sure:
 - Check logs for error messages
 - Verify all dependencies in `requirements.txt`
 - Ensure environment variables are set correctly
+- Make sure `groq` package is in requirements.txt
 
 ### API key not working
 - Verify key is set correctly in environment variables
-- Check key hasn't expired
+- Check key format (Groq keys don't start with "sk-")
 - Ensure no extra spaces in environment variable
+- Get a new key from [Groq Console](https://console.groq.com/keys)
 
 ### Static files not loading
 - Verify `templates/` and `static/` folders exist
@@ -256,6 +259,12 @@ Before deploying, make sure:
 ### Port errors
 - Most platforms set `PORT` environment variable
 - App should use: `port = int(os.environ.get('PORT', 5000))`
+
+### Groq API errors
+- Check your Groq account has credits/quota
+- Verify the API key is active
+- Check Groq status page for outages
+- Review Groq API documentation
 
 ---
 
@@ -274,7 +283,7 @@ Before deploying, make sure:
 3. **Documentation**
    - Update README with live URL
    - Add deployment badge
-   - Include tech stack
+   - Include tech stack (mention Groq!)
 
 ---
 
@@ -309,11 +318,18 @@ For portfolio projects, I recommend **Render** because:
 **Quick Render Deploy:**
 1. Push code to GitHub
 2. Connect to Render
-3. Add environment variables
+3. Add `GROQ_API_KEY` environment variable
 4. Deploy - done! ✨
 
 ---
 
+## 🔗 Useful Links
+
+- [Groq Console](https://console.groq.com/) - Get your API key
+- [Groq Documentation](https://console.groq.com/docs) - API documentation
+- [Render Documentation](https://render.com/docs)
+- [Railway Documentation](https://docs.railway.app)
+
+---
+
 Need help? Check platform documentation or create an issue!
-
-
